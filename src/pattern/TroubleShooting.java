@@ -7,13 +7,13 @@ import utils.XSSFInput;
 public class TroubleShooting {
 	
 	public static void extractWord() {
-		DictUtil.loadProblemWord();
-		DictUtil.loadProductWord();
+		DictUtil.loadDict(DictUtil.problemWord, FilePath.ProblemPatternFile);
+		DictUtil.loadDict(DictUtil.productWord, FilePath.ProblemProductFile);
 		XSSFInput xi = new XSSFInput(FilePath.ProblemDataFile);
 		String line[];
 		while((line = xi.getNextRow()) != null) {
 			for (int i = 0; i < line.length; i ++) {
-				if (line[i] == null) {
+				if (line[i] == null || (i != 2 && i != 3)) {
 					continue;
 				}
 				System.out.print("problems : ");
@@ -35,7 +35,7 @@ public class TroubleShooting {
 						indexStart = tempIndex + subStr.length();
 					}
 				}
-				//System.out.println();
+				System.out.println();
 				
 				System.out.print("product : ");
 				indexStart = 0;
@@ -56,7 +56,7 @@ public class TroubleShooting {
 						indexStart = tempIndex + subStr.length();
 					}
 				}
-				//System.out.println();
+				System.out.println();
 			}
 			System.out.println();
 		}
