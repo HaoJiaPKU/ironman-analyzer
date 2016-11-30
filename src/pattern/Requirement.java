@@ -2,8 +2,8 @@ package pattern;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 
@@ -77,9 +77,12 @@ public class Requirement {
 //		for (Keyword item : hkw) {
 //			kw.add(new Keyword(item));
 //		}
-		Collections.sort(kw, (o1, o2) -> {
-			return o1.pos <= o2.pos ? -1 : 1;
-		});
+		Collections.sort(kw, new Comparator<Keyword>(){  
+            @Override  
+            public int compare(Keyword o1, Keyword o2) {  
+            	return o1.pos <= o2.pos ? -1 : 1;
+            }
+        });
 //		for (int i = 0; i < kw.size(); i ++) {
 //			System.out.println(kw.get(i).word + "	" + kw.get(i).pos);
 //		}
@@ -341,7 +344,7 @@ public class Requirement {
 	}
 	
 	public static void main(String args[]) {
-//		batch();
+		batch();
 		removeDup();
 	}
 }

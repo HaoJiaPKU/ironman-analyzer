@@ -12,7 +12,7 @@ import edu.stanford.nlp.trees.international.pennchinese.ChineseTreebankLanguageP
 public class Parser {
 	
 	public static List parse(String str) {
-		LexicalizedParser lp = LexicalizedParser.loadModel("source/xinhuaFactoredSegmenting.ser.gz");
+		LexicalizedParser lp = LexicalizedParser.loadModel("../stanford-parser-dict-source/xinhuaFactoredSegmenting.ser.gz");
 		Tree t = lp.parse(str);
 		ChineseTreebankLanguagePack tlp = new ChineseTreebankLanguagePack();
 		GrammaticalStructureFactory gsf = tlp.grammaticalStructureFactory();  
